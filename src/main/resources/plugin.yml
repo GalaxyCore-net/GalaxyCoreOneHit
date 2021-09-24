@@ -1,0 +1,5 @@
+name: Onehit
+version: '${project.version}'
+main: net.galaxycore.onehit.OneHit
+api-version: 1.16
+author: Bloeckchengrafik
