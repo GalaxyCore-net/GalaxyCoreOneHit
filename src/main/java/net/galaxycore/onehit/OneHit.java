@@ -28,6 +28,7 @@ public final class OneHit extends JavaPlugin {
         configNamespace = core.getDatabaseConfiguration().getNamespace("OneHit");
         configNamespace.setDefault("spawn.count", "1");
         configNamespace.setDefault("spawn.0", "world -9 97 90 180");
+        configNamespace.setDefault("spawn.shapes", "-11 97 88 -7 100 92");
 
         // LISTENERS//
         Bukkit.getPluginManager().registerEvents(new BaseListeners(), this);
