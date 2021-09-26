@@ -17,43 +17,43 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class BaseListeners implements Listener {
     @EventHandler
-    public void onFoodLevelChange(FoodLevelChangeEvent event){
+    public void onFoodLevelChange(FoodLevelChangeEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void onEntitySummon(EntitySpawnEvent event){
+    public void onEntitySummon(EntitySpawnEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent event){
+    public void onInventoryClick(InventoryClickEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void onHandChange(PlayerSwapHandItemsEvent event){
+    public void onHandChange(PlayerSwapHandItemsEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void onDrop(PlayerDropItemEvent event){
+    public void onDrop(PlayerDropItemEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void onPickupArrow(PlayerPickupArrowEvent event){
+    public void onPickupArrow(PlayerPickupArrowEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void onArmorStandEdit(PlayerArmorStandManipulateEvent event){
+    public void onArmorStandEdit(PlayerArmorStandManipulateEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void onSendArrow(EntityShootBowEvent event){
-        if(event.getEntity() instanceof Player){
+    public void onSendArrow(EntityShootBowEvent event) {
+        if (event.getEntity() instanceof Player) {
             new ArrowDestroyJob(event.getProjectile()).runTaskLater(OneHit.getInstance(), 10 * 20L);
         }
     }
