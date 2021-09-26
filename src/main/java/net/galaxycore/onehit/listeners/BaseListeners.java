@@ -1,10 +1,12 @@
 package net.galaxycore.onehit.listeners;
 
+import io.papermc.paper.event.player.PlayerFlowerPotManipulateEvent;
 import net.galaxycore.onehit.OneHit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
@@ -48,6 +50,16 @@ public class BaseListeners implements Listener {
 
     @EventHandler
     public void onArmorStandEdit(PlayerArmorStandManipulateEvent event) {
+        event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onFlowerEdit(PlayerFlowerPotManipulateEvent event) {
+        event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onDamageTaken(EntityDamageEvent event) {
         event.setCancelled(true);
     }
 
