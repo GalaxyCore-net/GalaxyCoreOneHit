@@ -4,6 +4,8 @@ import lombok.Getter;
 import net.galaxycore.galaxycorecore.GalaxyCoreCore;
 import net.galaxycore.galaxycorecore.configuration.ConfigNamespace;
 import net.galaxycore.galaxycorecore.configuration.internationalisation.I18N;
+import net.galaxycore.onehit.ingame.IngameEventListener;
+import net.galaxycore.onehit.ingame.IngamePhase;
 import net.galaxycore.onehit.listeners.BaseListeners;
 import net.galaxycore.onehit.listeners.JoinListener;
 import net.galaxycore.onehit.listeners.MoveListener;
@@ -19,7 +21,9 @@ public final class OneHit extends JavaPlugin {
 
     private GalaxyCoreCore core;
     private ConfigNamespace configNamespace;
+
     private LobbyPhase lobbyPhase;
+    private IngamePhase ingamePhase;
 
     @Override
     public void onEnable() {
@@ -42,6 +46,9 @@ public final class OneHit extends JavaPlugin {
         I18N.setDefaultByLang("de_DE", "onehit.settings.booster.lore", "Schleudert dich für 5 min nach vorne\n§7(150 Coins)");
         I18N.setDefaultByLang("de_DE", "onehit.settings.booster.bought", "§eDu hast den Booster für 5 min erhalten!");
         I18N.setDefaultByLang("de_DE", "onehit.booster", "§cBooster");
+        I18N.setDefaultByLang("de_DE", "onehit.sword", "§cSchwert");
+        I18N.setDefaultByLang("de_DE", "onehit.bow", "§cBogen");
+        I18N.setDefaultByLang("de_DE", "onehit.arrow", "§cPfeil");
 
         I18N.setDefaultByLang("en_GB", "onehit.settings", "§eSettings");
         I18N.setDefaultByLang("en_GB", "onehit.settings.buy", "§eBuy: ");
@@ -49,6 +56,9 @@ public final class OneHit extends JavaPlugin {
         I18N.setDefaultByLang("en_GB", "onehit.settings.booster.lore", "Throws yourself forward for 5 min\n§7(150 Coins)");
         I18N.setDefaultByLang("en_GB", "onehit.settings.booster.bought", "§eYou bought the Booster for five minutes!");
         I18N.setDefaultByLang("en_GB", "onehit.booster", "§cBooster");
+        I18N.setDefaultByLang("en_GB", "onehit.sword", "§cSword");
+        I18N.setDefaultByLang("en_GB", "onehit.bow", "§cBow");
+        I18N.setDefaultByLang("en_GB", "onehit.arrow", "§cArrow");
 
         // LISTENERS//
         Bukkit.getPluginManager().registerEvents(new BaseListeners(), this);
@@ -58,5 +68,9 @@ public final class OneHit extends JavaPlugin {
         // LOBBY PHASE //
         lobbyPhase = new LobbyPhase();
         Bukkit.getPluginManager().registerEvents(new LobbyInteractListener(), this);
+
+        // INGAME PHASE //
+        ingamePhase = new IngamePhase();
+        Bukkit.getPluginManager().registerEvents(new IngameEventListener(), this);
     }
 }

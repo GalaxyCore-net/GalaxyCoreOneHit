@@ -4,6 +4,7 @@ import io.papermc.paper.event.player.AsyncChatEvent;
 import io.papermc.paper.event.player.PlayerFlowerPotManipulateEvent;
 import net.galaxycore.onehit.OneHit;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,7 +21,8 @@ public class BaseListeners implements Listener {
 
     @EventHandler
     public void onEntitySummon(EntitySpawnEvent event) {
-        event.setCancelled(true);
+        if (event.getEntity().getType() != EntityType.ARROW)
+            event.setCancelled(true);
     }
 
     @EventHandler

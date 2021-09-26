@@ -13,6 +13,10 @@ public class SpawnHelper {
     }
 
     public static boolean isPlayerInASpawn(Player player) {
+        return isLocationInASpawn(player.getLocation());
+    }
+
+    public static boolean isLocationInASpawn(Location location) {
         boolean inSpawn = false;
         String[] spawns = OneHit.getInstance().getConfigNamespace().get("spawn.shapes").split("\\|");
 
@@ -32,17 +36,17 @@ public class SpawnHelper {
             double y_max = Math.max(y0, y1);
             double z_max = Math.max(z0, z1);
 
-            double x = player.getLocation().getBlockX();
-            double y = player.getLocation().getBlockY();
-            double z = player.getLocation().getBlockZ();
+            double x = location.getBlockX();
+            double y = location.getBlockY();
+            double z = location.getBlockZ();
 
             inSpawn = inSpawn || (
                     (y >= y_min) &&
-                    (y <= y_max) &&
-                    (x >= x_min) &&
-                    (x <= x_max) &&
-                    (z >= z_min) &&
-                    (z <= z_max)
+                            (y <= y_max) &&
+                            (x >= x_min) &&
+                            (x <= x_max) &&
+                            (z >= z_min) &&
+                            (z <= z_max)
             );
         }
 
