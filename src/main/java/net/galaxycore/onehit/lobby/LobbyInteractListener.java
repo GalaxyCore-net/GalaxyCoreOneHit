@@ -14,8 +14,10 @@ public class LobbyInteractListener implements Listener {
         if (event.getAction() == Action.PHYSICAL) return;
 
         if(event.getItem() == null) return;
-        if (event.getItem().getType() == Material.FIRE_CHARGE && OneHit.getInstance().getLobbyPhase().getBoosters().containsKey(event.getPlayer().getUniqueId())){
+        if (event.getItem().getType() == Material.FIRE_CHARGE && OneHit.getInstance().getLobbyPhase().getBoosters().containsKey(event.getPlayer().getUniqueId())) {
+
             event.getPlayer().setVelocity(event.getPlayer().getLocation().getDirection().setY(0).multiply(4));
+            OneHit.getInstance().getIngamePhase().setItems(event.getPlayer());
         }
 
         if(!SpawnHelper.isPlayerInASpawn(event.getPlayer())) return;

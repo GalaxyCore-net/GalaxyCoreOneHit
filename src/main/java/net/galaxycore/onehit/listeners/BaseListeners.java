@@ -46,6 +46,11 @@ public class BaseListeners implements Listener {
     }
 
     @EventHandler
+    public void onItemDamaged(PlayerItemDamageEvent event) {
+        event.setCancelled(true);
+    }
+
+    @EventHandler
     public void onArmorStandEdit(PlayerArmorStandManipulateEvent event) {
         event.setCancelled(true);
     }

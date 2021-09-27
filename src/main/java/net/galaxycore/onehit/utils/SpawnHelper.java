@@ -52,4 +52,9 @@ public class SpawnHelper {
 
         return inSpawn;
     }
+
+    public static void reset(Player player){
+        player.teleport(SpawnHelper.getRandomSpawn());
+        OneHit.getInstance().getLobbyPhase().setItems(player);
+    }
 }

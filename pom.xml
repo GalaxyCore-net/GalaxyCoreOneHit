@@ -6,10 +6,10 @@
 
     <groupId>net.galaxycore</groupId>
     <artifactId>onehit</artifactId>
-    <version>1.0A</version>
+    <version>1.0B</version>
     <packaging>jar</packaging>
 
-    <name>Onehit</name>
+    <name>OneHit</name>
 
     <properties>
         <java.version>1.8</java.version>

@@ -2,7 +2,6 @@ package net.galaxycore.onehit.ingame;
 
 import net.galaxycore.galaxycorecore.configuration.internationalisation.I18N;
 import net.galaxycore.onehit.utils.ObjectHelpers;
-import net.galaxycore.onehit.utils.SpawnHelper;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -13,10 +12,11 @@ import java.util.Arrays;
 
 public class IngamePhase {
     public void setItems(Player player) {
-        if (!(player.getInventory().getItem(0) == null && player.getInventory().getItem(1) == null)) return;
+        if (!(player.getInventory().getItem(0) == null || player.getInventory().getItem(1) == null)) return;
         if (ObjectHelpers.objectOrDefault(player.getInventory().getItem(0), new ItemStack(Material.FIRE)).getType() == Material.DIAMOND_SWORD &&
-                ObjectHelpers.objectOrDefault(player.getInventory().getItem(1), new ItemStack(Material.FIRE)).getType() == Material.BOW)
+                ObjectHelpers.objectOrDefault(player.getInventory().getItem(1), new ItemStack(Material.FIRE)).getType() == Material.BOW) {
             return;
+        }
 
         Inventory inventory = player.getInventory();
         inventory.clear();

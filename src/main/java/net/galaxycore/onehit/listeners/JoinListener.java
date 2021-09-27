@@ -20,8 +20,6 @@ public class JoinListener implements Listener {
 
         Objects.requireNonNull(event.getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(2);
 
-        event.getPlayer().teleport(SpawnHelper.getRandomSpawn());
-
-        OneHit.getInstance().getLobbyPhase().setItems(event.getPlayer());
+        SpawnHelper.reset(event.getPlayer());
     }
 }
