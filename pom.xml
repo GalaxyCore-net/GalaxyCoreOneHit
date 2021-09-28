@@ -6,7 +6,7 @@
 
     <groupId>net.galaxycore</groupId>
     <artifactId>onehit</artifactId>
-    <version>1.0B</version>
+    <version>1.0C</version>
     <packaging>jar</packaging>
 
     <name>OneHit</name>
