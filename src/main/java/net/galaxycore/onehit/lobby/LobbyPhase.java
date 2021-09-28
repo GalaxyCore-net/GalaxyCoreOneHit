@@ -2,6 +2,7 @@ package net.galaxycore.onehit.lobby;
 
 import lombok.Getter;
 import net.galaxycore.galaxycorecore.configuration.internationalisation.I18N;
+import net.galaxycore.onehit.utils.I18NUtils;
 import net.galaxycore.onehit.utils.ObjectHelpers;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
@@ -49,12 +50,12 @@ public class LobbyPhase {
         // create items
         ItemStack booster = new ItemStack(Material.FIRE_CHARGE);
         ItemMeta boosterItemMeta = booster.getItemMeta();
-        boosterItemMeta.displayName(Component.text(I18N.getByPlayer(player, "onehit.booster")));
+        boosterItemMeta.displayName(Component.text(I18NUtils.get(player, "booster")));
         booster.setItemMeta(boosterItemMeta);
 
         ItemStack settings = new ItemStack(Material.NETHER_STAR);
         ItemMeta settingsItemMeta = settings.getItemMeta();
-        settingsItemMeta.displayName(Component.text(I18N.getByPlayer(player, "onehit.settings")));
+        settingsItemMeta.displayName(Component.text(I18NUtils.get(player, "settings")));
         settings.setItemMeta(settingsItemMeta);
 
         // set inv

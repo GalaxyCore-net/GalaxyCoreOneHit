@@ -1,6 +1,5 @@
 package net.galaxycore.onehit.listeners;
 
-import io.papermc.paper.event.player.AsyncChatEvent;
 import io.papermc.paper.event.player.PlayerFlowerPotManipulateEvent;
 import net.galaxycore.onehit.OneHit;
 import org.bukkit.entity.Entity;

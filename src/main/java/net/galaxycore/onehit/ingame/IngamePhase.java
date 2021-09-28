@@ -1,6 +1,6 @@
 package net.galaxycore.onehit.ingame;
 
-import net.galaxycore.galaxycorecore.configuration.internationalisation.I18N;
+import net.galaxycore.onehit.utils.I18NUtils;
 import net.galaxycore.onehit.utils.ObjectHelpers;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -21,9 +21,9 @@ public class IngamePhase {
         Inventory inventory = player.getInventory();
         inventory.clear();
 
-        ItemStack sword = makeItem(Material.DIAMOND_SWORD, I18N.getByPlayer(player, "onehit.sword"));
-        ItemStack bow = makeItem(Material.BOW, I18N.getByPlayer(player, "onehit.bow"));
-        ItemStack arrow = makeItem(Material.ARROW, I18N.getByPlayer(player, "onehit.arrow"));
+        ItemStack sword = makeItem(Material.DIAMOND_SWORD, I18NUtils.get(player, "sword"));
+        ItemStack bow = makeItem(Material.BOW, I18NUtils.get(player, "bow"));
+        ItemStack arrow = makeItem(Material.ARROW, I18NUtils.get(player, "arrow"));
 
         inventory.setItem(0, sword);
         inventory.setItem(1, bow);

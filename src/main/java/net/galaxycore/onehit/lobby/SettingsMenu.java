@@ -4,6 +4,7 @@ import me.kodysimpson.menumanagersystem.menusystem.Menu;
 import me.kodysimpson.menumanagersystem.menusystem.PlayerMenuUtility;
 import net.galaxycore.galaxycorecore.configuration.internationalisation.I18N;
 import net.galaxycore.onehit.OneHit;
+import net.galaxycore.onehit.utils.I18NUtils;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -20,7 +21,7 @@ public class SettingsMenu extends Menu {
 
     @Override
     public String getMenuName() {
-        return I18N.getByPlayer(playerMenuUtility.getOwner(), "onehit.settings");
+        return I18NUtils.get(playerMenuUtility.getOwner(), "settings");
     }
 
     @Override
@@ -42,12 +43,12 @@ public class SettingsMenu extends Menu {
     public void setMenuItems() {
         ItemStack booster = new ItemStack(Material.FIRE_CHARGE);
         ItemMeta boosterItemMeta = booster.getItemMeta();
-        boosterItemMeta.displayName(Component.text(I18N.getByPlayer(playerMenuUtility.getOwner(), "onehit.settings.buy") + I18N.getByPlayer(playerMenuUtility.getOwner(), "onehit.booster")));
+        boosterItemMeta.displayName(Component.text(I18NUtils.get(playerMenuUtility.getOwner(), "settings.buy") + I18N.getByPlayer(playerMenuUtility.getOwner(), "onehit.booster")));
         boosterItemMeta.lore(List.of(
-                Component.text(I18N.getByPlayer(playerMenuUtility.getOwner(), "onehit.settings.booster.lore")),
+                Component.text(I18NUtils.get(playerMenuUtility.getOwner(), "settings.booster.lore")),
                 OneHit.getInstance().getLobbyPhase().getBoosters().containsKey(playerMenuUtility.getOwner().getUniqueId()) ?
-                        Component.text(I18N.getByPlayer(playerMenuUtility.getOwner(), "onehit.settings.alreadybought")) :
-                        Component.text("")
+                        Component.text(I18NUtils.get(playerMenuUtility.getOwner(), "settings.alreadybought")) :
+                        Component.text(I18NUtils.get(playerMenuUtility.getOwner(), "settings.booster.price"))
         ));
         booster.setItemMeta(boosterItemMeta);
 
