@@ -1,10 +1,15 @@
 package net.galaxycore.onehit.ingame;
 
-import net.galaxycore.galaxycorecore.chattools.ChatManager;
+import net.galaxycore.galaxycorecore.configuration.internationalisation.I18N;
 import net.galaxycore.galaxycorecore.events.ServerTimePassedEvent;
+import net.galaxycore.galaxycorecore.permissions.LuckPermsApiWrapper;
+import net.galaxycore.galaxycorecore.utils.StringUtils;
 import net.galaxycore.onehit.OneHit;
+import net.galaxycore.onehit.listeners.MessageSetLoader;
 import net.galaxycore.onehit.utils.I18NUtils;
 import net.galaxycore.onehit.utils.SpawnHelper;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Arrow;
@@ -13,6 +18,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.Inventory;
+
+import java.util.Objects;
 
 public class IngameEventListener implements Listener {
     @EventHandler
@@ -35,7 +43,7 @@ public class IngameEventListener implements Listener {
 
         if (killerType == EntityType.ARROW) {
             if (((Arrow) event.getDamager()).getShooter() == damaged) {
-                Bukkit.getOnlinePlayers().forEach(player -> player.sendMessage(Component.text(I18NUtils.get(player, "killedself"))));
+                Bukkit.getOnlinePlayers().forEach(player -> player.sendMessage(Component.text(StringUtils.replaceRelevant(I18N.getByPlayer(player, "onehit." + MessageSetLoader.get(player) + ".killedself"), new LuckPermsApiWrapper(damaged)))));
                 event.getDamager().remove();
                 return;
             }
@@ -48,6 +56,19 @@ public class IngameEventListener implements Listener {
                     20
             );
 
+            ((Player) Objects.requireNonNull(((Arrow) event.getDamager()).getShooter())).sendTitle(
+                    I18NUtils.get(damaged, "wonfight"),
+                    I18NUtils.get(damaged, "wonfight.sub"),
+                    20,
+                    40,
+                    20
+            );
+
+            damaged.playSound(Sound.sound(Key.key("minecraft", "entity.player.death"), Sound.Source.MASTER, 1f, 1f));
+            ((Player) Objects.requireNonNull(((Arrow) event.getDamager()).getShooter())).playSound(Sound.sound(Key.key("minecraft", "block.note_block.pling"), Sound.Source.MASTER, 1f, 2f));
+
+            spawnArrow(((Player) Objects.requireNonNull(((Arrow) event.getDamager()).getShooter())));
+
             SpawnHelper.reset(damaged);
         } else if (killerType == EntityType.PLAYER) {
             damaged.sendTitle(
@@ -58,7 +79,30 @@ public class IngameEventListener implements Listener {
                     20
             );
 
+            ((Player) event.getDamager()).sendTitle(
+                    I18NUtils.get(damaged, "wonfight"),
+                    I18NUtils.get(damaged, "wonfight.sub"),
+                    20,
+                    40,
+                    20
+            );
+
+            damaged.playSound(Sound.sound(Key.key("minecraft", "entity.player.death"), Sound.Source.MASTER, 1f, 1f));
+            event.getDamager().playSound(Sound.sound(Key.key("minecraft", "block.note_block.pling"), Sound.Source.MASTER, 1f, 2f));
+
+            spawnArrow((Player) event.getDamager());
+
             SpawnHelper.reset(damaged);
         }
+    }
+
+    private void spawnArrow(Player player) {
+        Inventory inventory = player.getInventory();
+        if (inventory.getItem(8) == null) {
+            OneHit.getInstance().getIngamePhase().setItemsWithoutHesitaiton(player);
+            return;
+        }
+
+        Objects.requireNonNull(inventory.getItem(8)).setAmount(Objects.requireNonNull(inventory.getItem(8)).getAmount() < 16 ? Objects.requireNonNull(inventory.getItem(8)).getAmount() + 1 : 16);
     }
 }

@@ -58,9 +58,11 @@ public final class OneHit extends JavaPlugin {
         I18N.setDefaultByLang("de_DE", "onehit.0.sword", "§cSchwert");
         I18N.setDefaultByLang("de_DE", "onehit.0.bow", "§cBogen");
         I18N.setDefaultByLang("de_DE", "onehit.0.arrow", "§cPfeil");
-        I18N.setDefaultByLang("de_DE", "onehit.0.killed", "§l§c✖§r§4Gestorben");
+        I18N.setDefaultByLang("de_DE", "onehit.0.killed", "§l§c✖ §r§4Gestorben");
         I18N.setDefaultByLang("de_DE", "onehit.0.killed.sub", "%rank_prefix%%player% §8| §c-5 Coins");
         I18N.setDefaultByLang("de_DE", "onehit.0.killedself", "%rank_prefix%%player% §9hat sich selber mit dem Bogen abgeschossen. Das ist belastend.");
+        I18N.setDefaultByLang("de_DE", "onehit.0.wonfight", "§l§a✓ §r§4+5 Coins");
+        I18N.setDefaultByLang("de_DE", "onehit.0.wonfight.sub", "%rank_prefix%%player%");
 
         I18N.setDefaultByLang("en_GB", "onehit.0.settings", "§eSettings");
         I18N.setDefaultByLang("en_GB", "onehit.0.settings.buy", "§eBuy: ");
@@ -72,9 +74,11 @@ public final class OneHit extends JavaPlugin {
         I18N.setDefaultByLang("en_GB", "onehit.0.sword", "§cSword");
         I18N.setDefaultByLang("en_GB", "onehit.0.bow", "§cBow");
         I18N.setDefaultByLang("en_GB", "onehit.0.arrow", "§cArrow");
-        I18N.setDefaultByLang("en_GB", "onehit.0.killed", "§l§c✖§r§4You Died");
-        I18N.setDefaultByLang("en_GB", "onehit.0.killed.sub", "%rank_prefix%%player% §8| §c-5 Coins");
+        I18N.setDefaultByLang("en_GB", "onehit.0.killed", "§l§c✖ §r§4You Died");
+        I18N.setDefaultByLang("en_GB", "onehit.0.killed.sub", "%rank_prefix%%player% §8| §c-1 Coin");
         I18N.setDefaultByLang("en_GB", "onehit.0.killedself", "%rank_prefix%%player% §9tried to kill himself with a bow. That's hilarious!");
+        I18N.setDefaultByLang("en_GB", "onehit.0.wonfight", "§l§a✓ §r§4+5 Coins");
+        I18N.setDefaultByLang("en_GB", "onehit.0.wonfight.sub", "%rank_prefix%%player%");
 
         // LISTENERS//
         Bukkit.getPluginManager().registerEvents(new BaseListeners(), this);

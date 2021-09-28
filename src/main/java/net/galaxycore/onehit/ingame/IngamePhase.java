@@ -18,6 +18,10 @@ public class IngamePhase {
             return;
         }
 
+        setItemsWithoutHesitaiton(player);
+    }
+
+    public void setItemsWithoutHesitaiton(Player player) {
         Inventory inventory = player.getInventory();
         inventory.clear();
 
