@@ -7,5 +7,6 @@ depend:
   - GalaxyCoreCore
 
 commands:
-  debug:
-    usage: /debug [suicide]
+  ohdb:
+    usage: /ohdb [suicide|on|off]
+    permission: onehit.debug

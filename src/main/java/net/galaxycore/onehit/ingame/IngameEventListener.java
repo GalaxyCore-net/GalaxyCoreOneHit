@@ -5,6 +5,8 @@ import net.galaxycore.galaxycorecore.events.ServerTimePassedEvent;
 import net.galaxycore.galaxycorecore.permissions.LuckPermsApiWrapper;
 import net.galaxycore.galaxycorecore.utils.StringUtils;
 import net.galaxycore.onehit.OneHit;
+import net.galaxycore.onehit.bindings.CoinsBinding;
+import net.galaxycore.onehit.bindings.StatsBinding;
 import net.galaxycore.onehit.listeners.MessageSetLoader;
 import net.galaxycore.onehit.utils.I18NUtils;
 import net.galaxycore.onehit.utils.SpawnHelper;
@@ -68,6 +70,7 @@ public class IngameEventListener implements Listener {
             ((Player) Objects.requireNonNull(((Arrow) event.getDamager()).getShooter())).playSound(Sound.sound(Key.key("minecraft", "block.note_block.pling"), Sound.Source.MASTER, 1f, 2f));
 
             spawnArrow(((Player) Objects.requireNonNull(((Arrow) event.getDamager()).getShooter())));
+            registerPlayerDead(((Player) Objects.requireNonNull(((Arrow) event.getDamager()).getShooter())), damaged);
 
             SpawnHelper.reset(damaged);
         } else if (killerType == EntityType.PLAYER) {
@@ -92,8 +95,18 @@ public class IngameEventListener implements Listener {
 
             spawnArrow((Player) event.getDamager());
 
+            registerPlayerDead((Player) event.getDamager(), damaged);
+
             SpawnHelper.reset(damaged);
         }
+    }
+
+    private void registerPlayerDead(Player damager, Player damaged) {
+        new StatsBinding(damager).addKill();
+        new StatsBinding(damaged).addDeath();
+
+        new CoinsBinding(damager).increase(Long.parseLong(OneHit.getInstance().getConfigNamespace().get("kill_coins_plus")));
+        new CoinsBinding(damaged).decrease(Long.parseLong(OneHit.getInstance().getConfigNamespace().get("death_coins_minus")), "PlayerDeath");
     }
 
     private void spawnArrow(Player player) {

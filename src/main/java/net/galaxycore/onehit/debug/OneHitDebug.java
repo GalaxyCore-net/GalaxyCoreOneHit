@@ -1,6 +1,7 @@
 package net.galaxycore.onehit.debug;
 
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -9,9 +10,11 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class DebugCommand implements CommandExecutor, TabCompleter {
+public class OneHitDebug implements CommandExecutor, TabCompleter {
+    private static final ArrayList<Player> debugPlayers = new ArrayList<>();
     /**
      * Executes the given command, returning its success.
      * <br>
@@ -32,10 +35,31 @@ public class DebugCommand implements CommandExecutor, TabCompleter {
         if(args[0].equalsIgnoreCase("suicide")) {
             Player player = (Player) sender;
             player.damage(1, player);
-            player.sendMessage(Component.text("Done that 主人!"));
+            player.sendMessage(Component.text("Done that Master! Nya!"));
+        }
+
+        if(args[0].equalsIgnoreCase("on")) {
+            Player player = (Player) sender;
+            if (!debugPlayers.contains(player)) {
+                debugPlayers.add(player);
+            }
+            player.sendMessage(Component.text("Done that Master! Nya!"));
+        }
+
+        if(args[0].equalsIgnoreCase("off")) {
+            Player player = (Player) sender;
+            debugPlayers.remove(player);
+            player.sendMessage(Component.text("Done that Master! Nya!"));
         }
 
         return true;
+    }
+
+    public static void debug(String msg){
+        for (Player debugPlayer : debugPlayers) {
+            if(Bukkit.getOnlinePlayers().contains(debugPlayer))
+                debugPlayer.sendMessage(Component.text("§8[§9DEBUG§8]§7 " + msg));
+        }
     }
 
     /**
@@ -54,7 +78,9 @@ public class DebugCommand implements CommandExecutor, TabCompleter {
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
         return List.of(
-                "suicide"
+                "suicide",
+                "on",
+                "off"
         );
     }
 }
