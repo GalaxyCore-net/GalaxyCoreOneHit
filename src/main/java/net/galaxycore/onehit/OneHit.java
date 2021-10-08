@@ -3,7 +3,11 @@ package net.galaxycore.onehit;
 import lombok.Getter;
 import net.galaxycore.galaxycorecore.GalaxyCoreCore;
 import net.galaxycore.galaxycorecore.configuration.ConfigNamespace;
+import net.galaxycore.galaxycorecore.configuration.PlayerLoader;
 import net.galaxycore.galaxycorecore.configuration.internationalisation.I18N;
+import net.galaxycore.galaxycorecore.scoreboards.ScoreBoardController;
+import net.galaxycore.onehit.bindings.ScoreboardCallback;
+import net.galaxycore.onehit.bindings.StatsBinding;
 import net.galaxycore.onehit.debug.OneHitDebug;
 import net.galaxycore.onehit.ingame.IngameEventListener;
 import net.galaxycore.onehit.ingame.IngamePhase;
@@ -14,6 +18,9 @@ import net.galaxycore.onehit.listeners.MoveListener;
 import net.galaxycore.onehit.lobby.LobbyInteractListener;
 import net.galaxycore.onehit.lobby.LobbyPhase;
 import org.bukkit.Bukkit;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
@@ -69,6 +76,12 @@ public final class OneHit extends JavaPlugin {
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".killedself", "%rank_prefix%%player% §9hat sich selber mit dem Bogen abgeschossen. Das ist belastend.");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".wonfight", "§l§a✓ §r§4+5 Coins");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".wonfight.sub", "%rank_prefix%%player%");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.kills", "Kills");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.deaths", "Tode");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.kd", "KD");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.coins", "Coins");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.sub", "Teamspeak-Server");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.sub.value", "galaxycore.net");
 
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings", "§eSettings");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.buy", "§eBuy: ");
@@ -85,6 +98,12 @@ public final class OneHit extends JavaPlugin {
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".killedself", "%rank_prefix%%player% §9tried to kill himself with a bow. That's hilarious!");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".wonfight", "§l§a✓ §r§4+5 Coins");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".wonfight.sub", "%rank_prefix%%player%");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.kills", "Kills");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.deaths", "Deaths");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.kd", "KD");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.coins", "Coins");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.sub", "Teamspeak-Server");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.sub.value", "galaxycore.net");
         }
         // LISTENERS//
         Bukkit.getPluginManager().registerEvents(new BaseListeners(), this);
@@ -98,6 +117,18 @@ public final class OneHit extends JavaPlugin {
         // INGAME PHASE //
         ingamePhase = new IngamePhase();
         Bukkit.getPluginManager().registerEvents(new IngameEventListener(), this);
+
+        // STATS //
+        StatsBinding.init();
+        Bukkit.getPluginManager().registerEvents(new Listener() {
+            @EventHandler
+            public void onPlayerJoin(PlayerJoinEvent event) {
+                StatsBinding.load(PlayerLoader.load(event.getPlayer()));
+            }
+        }, this);
+
+        // SCOREBOARD //
+        ScoreBoardController.setScoreBoardCallback(new ScoreboardCallback());
 
         // DEBUG //
         Objects.requireNonNull(getCommand("ohdb")).setExecutor(new OneHitDebug());
