@@ -16,28 +16,28 @@ public class ScoreboardCallback implements IScoreBoardCallback {
 
         switch (i) {
             case 0:
-                kv[0] = I18NUtils.get(player, "score.kills");
+                kv[0] = "§e" + I18NUtils.get(player, "score.kills");
                 statsBinding = new StatsBinding(player);
-                kv[2] = String.valueOf((int) statsBinding.getKills());
+                kv[2] = "§e" + (int) statsBinding.getKills();
                 break;
             case 1:
-                kv[0] = I18NUtils.get(player, "score.deaths");
+                kv[0] = "§e" + I18NUtils.get(player, "score.deaths");
                 statsBinding = new StatsBinding(player);
-                kv[2] = String.valueOf((int) statsBinding.getDeaths());
+                kv[2] = "§e" + (int) statsBinding.getDeaths();
                 break;
             case 2:
-                kv[0] = I18NUtils.get(player, "score.kd");
+                kv[0] = "§e" + I18NUtils.get(player, "score.kd");
                 statsBinding = new StatsBinding(player);
-                kv[2] = new DecimalFormat("#.##").format(statsBinding.getKD());
+                kv[2] = "§e" + new DecimalFormat("#.##").format(statsBinding.getKD());
                 break;
             case 3:
-                kv[0] = I18NUtils.get(player, "score.coins");
+                kv[0] = "§e" + I18NUtils.get(player, "score.coins");
                 CoinsBinding coinsBinding = new CoinsBinding(player);
-                kv[2] = String.valueOf(coinsBinding.getCoins());
+                kv[2] = "§e" + coinsBinding.getCoins();
                 break;
             case 4:
-                kv[0] = I18NUtils.get(player, "score.sub");
-                kv[2] = I18NUtils.get(player, "score.sub.value");
+                kv[0] = "§e" + I18NUtils.get(player, "score.sub");
+                kv[2] = "§e" + I18NUtils.get(player, "score.sub.value");
                 break;
         }
 

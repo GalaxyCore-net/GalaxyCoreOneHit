@@ -1,5 +1,8 @@
 package net.galaxycore.onehit.debug;
 
+import net.galaxycore.galaxycorecore.configuration.PlayerLoader;
+import net.galaxycore.onehit.OneHit;
+import net.galaxycore.onehit.bindings.StatsBinding;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -52,6 +55,12 @@ public class OneHitDebug implements CommandExecutor, TabCompleter {
             player.sendMessage(Component.text("Done that Master! Nya!"));
         }
 
+        if(args[0].equalsIgnoreCase("resetstats")) {
+            Player player = (Player) sender;
+            new StatsBinding(player).reset();
+            player.sendMessage(Component.text("Done that Master! Nya!"));
+        }
+
         return true;
     }
 
@@ -80,7 +89,8 @@ public class OneHitDebug implements CommandExecutor, TabCompleter {
         return List.of(
                 "suicide",
                 "on",
-                "off"
+                "off",
+                "resetstats"
         );
     }
 }

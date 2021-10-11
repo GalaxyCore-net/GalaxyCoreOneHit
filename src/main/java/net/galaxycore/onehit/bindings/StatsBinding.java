@@ -112,7 +112,7 @@ public class StatsBinding {
             kdCache.put(player.getUniqueId(), k/d);
 
         kills.put(player.getUniqueId(), k);
-        deaths.put(player.getUniqueId(), k);
+        deaths.put(player.getUniqueId(), d);
 
         resultDefaultKD.close();
     }
@@ -122,7 +122,7 @@ public class StatsBinding {
         OneHitDebug.debug(player + " gets a Death added");
 
         PreparedStatement statement = OneHit.getInstance().getCore().getDatabaseConfiguration().getConnection().prepareStatement(
-                "UPDATE `OneHit_stats` SET `kills` = `kills` - 1 WHERE `pid` = ?"
+                "UPDATE `OneHit_stats` SET `deaths` = `deaths` + 1 WHERE `pid` = ?"
         );
         statement.setInt(1, PlayerLoader.load(player).getId());
         statement.executeUpdate();

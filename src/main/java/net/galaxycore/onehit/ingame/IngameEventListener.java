@@ -74,6 +74,7 @@ public class IngameEventListener implements Listener {
 
             SpawnHelper.reset(damaged);
         } else if (killerType == EntityType.PLAYER) {
+            if (SpawnHelper.isPlayerInASpawn((Player) event.getDamager())) return;
             damaged.sendTitle(
                     I18NUtils.get((Player) event.getDamager(), "killed"),
                     I18NUtils.get((Player) event.getDamager(), "killed.sub"),
