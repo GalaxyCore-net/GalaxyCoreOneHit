@@ -90,15 +90,16 @@ public class SettingsMenu extends Menu {
         ItemStack messageSet0 = makeItem(MessageSetLoader.get(playerMenuUtility.getOwner()) == 0 ? Material.ENCHANTED_BOOK : Material.BOOK, I18NUtils.get(playerMenuUtility.getOwner(), "settings.messageset.0.name"));
         ItemStack messageSet1 = makeItem(MessageSetLoader.get(playerMenuUtility.getOwner()) == 1 ? Material.ENCHANTED_BOOK : Material.BOOK, (playerMenuUtility.getOwner().hasPermission("onehit.messageset.1") ? "" : I18NUtils.get(playerMenuUtility.getOwner(), "settings.buy")) + I18NUtils.get(playerMenuUtility.getOwner(), "settings.messageset.1.name"), (playerMenuUtility.getOwner().hasPermission("onehit.messageset.1") ? I18NUtils.get(playerMenuUtility.getOwner(), "settings.alreadybought") : "§7" + price1 + " " + I18NUtils.get(playerMenuUtility.getOwner(), "settings.coins")));
         ItemStack messageSet2 = makeItem(MessageSetLoader.get(playerMenuUtility.getOwner()) == 2 ? Material.ENCHANTED_BOOK : Material.BOOK, (playerMenuUtility.getOwner().hasPermission("onehit.messageset.2") ? "" : I18NUtils.get(playerMenuUtility.getOwner(), "settings.buy")) + I18NUtils.get(playerMenuUtility.getOwner(), "settings.messageset.2.name"), (playerMenuUtility.getOwner().hasPermission("onehit.messageset.2") ? I18NUtils.get(playerMenuUtility.getOwner(), "settings.alreadybought") : "§7" + price2 + " " + I18NUtils.get(playerMenuUtility.getOwner(), "settings.coins")));
-        ItemStack messageSet3 = makeItem(MessageSetLoader.get(playerMenuUtility.getOwner()) == 3 ? Material.ENCHANTED_BOOK : Material.BOOK, (playerMenuUtility.getOwner().hasPermission("onehit.messageset.3") ? "" : I18NUtils.get(playerMenuUtility.getOwner(), "settings.buy")) + I18NUtils.get(playerMenuUtility.getOwner(), "settings.messageset.3.name"), (playerMenuUtility.getOwner().hasPermission("onehit.messageset.3") ? I18NUtils.get(playerMenuUtility.getOwner(), "settings.alreadybought") : "§7" + price3 + " " + I18NUtils.get(playerMenuUtility.getOwner(), "settings.coins")));
 
         inventory.setItem(2, booster);
         inventory.setItem(5, messageSet0);
         inventory.setItem(6, messageSet1);
         inventory.setItem(7, messageSet2);
 
-        if (playerMenuUtility.getOwner().hasPermission("onehit.teammsg"))
+        if (playerMenuUtility.getOwner().hasPermission("onehit.teammsg")) {
+            ItemStack messageSet3 = makeItem(MessageSetLoader.get(playerMenuUtility.getOwner()) == 3 ? Material.ENCHANTED_BOOK : Material.BOOK, (playerMenuUtility.getOwner().hasPermission("onehit.messageset.3") ? "" : I18NUtils.get(playerMenuUtility.getOwner(), "settings.buy")) + I18NUtils.get(playerMenuUtility.getOwner(), "settings.messageset.3.name"), (playerMenuUtility.getOwner().hasPermission("onehit.messageset.3") ? I18NUtils.get(playerMenuUtility.getOwner(), "settings.alreadybought") : "§7" + price3 + " " + I18NUtils.get(playerMenuUtility.getOwner(), "settings.coins")));
             inventory.setItem(8, messageSet3);
+        }
 
         setFillerGlass();
     }
