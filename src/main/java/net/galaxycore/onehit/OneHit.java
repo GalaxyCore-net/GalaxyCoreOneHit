@@ -11,6 +11,7 @@ import net.galaxycore.onehit.bindings.StatsBinding;
 import net.galaxycore.onehit.debug.OneHitDebug;
 import net.galaxycore.onehit.ingame.IngameEventListener;
 import net.galaxycore.onehit.ingame.IngamePhase;
+import net.galaxycore.onehit.ingame.StreakManager;
 import net.galaxycore.onehit.listeners.BaseListeners;
 import net.galaxycore.onehit.listeners.JoinListener;
 import net.galaxycore.onehit.listeners.MessageSetLoader;
@@ -83,12 +84,17 @@ public final class OneHit extends JavaPlugin {
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".wonfight", "§l§a✓ §r§4+5 Coins");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".wonfight.sub", "%rank_prefix%%player%");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.kills", "Kills");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.kills.color", "§e");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.deaths", "Tode");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.deaths.color", "§e");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.kd", "KD");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.kd.color", "§e");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.coins", "Coins");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.coins.color", "§e");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.sub", "Teamspeak-Server");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.sub.value", "galaxycore.net");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".nomoney", "§cDu hast nicht genügend Geld");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".streak", "§c%player% hat nun einen Streak von %d!");
 
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings", "§eSettings");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.buy", "§eBuy: ");
@@ -112,12 +118,17 @@ public final class OneHit extends JavaPlugin {
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".wonfight", "§l§a✓ §r§4+5 Coins");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".wonfight.sub", "%rank_prefix%%player%");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.kills", "Kills");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.kills.color", "§e");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.deaths", "Deaths");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.deaths.color", "§e");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.kd", "KD");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.kd.color", "§e");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.coins", "Coins");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.coins.color", "§e");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.sub", "Teamspeak-Server");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.sub.value", "galaxycore.net");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".nomoney", "§cYou don't have enough money");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".streak", "§c%player% now has a streak of %d");
         }
         // LISTENERS//
         Bukkit.getPluginManager().registerEvents(new BaseListeners(), this);
@@ -131,6 +142,9 @@ public final class OneHit extends JavaPlugin {
         // INGAME PHASE //
         ingamePhase = new IngamePhase();
         Bukkit.getPluginManager().registerEvents(new IngameEventListener(), this);
+
+        // STREAKS //
+        Bukkit.getPluginManager().registerEvents(new StreakManager(), this);
 
         // STATS //
         StatsBinding.init();

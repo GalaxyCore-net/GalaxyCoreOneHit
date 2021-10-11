@@ -49,6 +49,8 @@ public class IngameEventListener implements Listener {
                 event.getDamager().remove();
                 return;
             }
+            
+            event.getDamager().remove();
 
             damaged.sendTitle(
                     I18NUtils.get((Player) ((Arrow) event.getDamager()).getShooter(), "killed"),
@@ -105,6 +107,9 @@ public class IngameEventListener implements Listener {
     private void registerPlayerDead(Player damager, Player damaged) {
         new StatsBinding(damager).addKill();
         new StatsBinding(damaged).addDeath();
+
+        StreakManager.registerKill(damager);
+        StreakManager.registerDeath(damaged);
 
         new CoinsBinding(damager).increase(Long.parseLong(OneHit.getInstance().getConfigNamespace().get("kill_coins_plus")));
         new CoinsBinding(damaged).decrease(Long.parseLong(OneHit.getInstance().getConfigNamespace().get("death_coins_minus")), "PlayerDeath");
