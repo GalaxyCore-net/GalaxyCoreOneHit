@@ -53,16 +53,16 @@ public class IngameEventListener implements Listener {
             event.getDamager().remove();
 
             damaged.sendTitle(
-                    I18NUtils.get((Player) ((Arrow) event.getDamager()).getShooter(), "killed"),
-                    I18NUtils.get((Player) ((Arrow) event.getDamager()).getShooter(), "killed.sub"),
+                    I18NUtils.get(damaged, "killed"),
+                    I18NUtils.get(damaged, "killed.sub"),
                     20,
                     40,
                     20
             );
 
             ((Player) Objects.requireNonNull(((Arrow) event.getDamager()).getShooter())).sendTitle(
-                    I18NUtils.get(damaged, "wonfight"),
-                    I18NUtils.get(damaged, "wonfight.sub"),
+                    I18NUtils.get((Player) ((Arrow) event.getDamager()).getShooter(), "wonfight"),
+                    I18NUtils.get((Player) ((Arrow) event.getDamager()).getShooter(), "wonfight.sub"),
                     20,
                     40,
                     20
@@ -78,16 +78,16 @@ public class IngameEventListener implements Listener {
         } else if (killerType == EntityType.PLAYER) {
             if (SpawnHelper.isPlayerInASpawn((Player) event.getDamager())) return;
             damaged.sendTitle(
-                    I18NUtils.get((Player) event.getDamager(), "killed"),
-                    I18NUtils.get((Player) event.getDamager(), "killed.sub"),
+                    I18NUtils.get(damaged, "killed"),
+                    I18NUtils.get(damaged, "killed.sub"),
                     20,
                     40,
                     20
             );
 
             ((Player) event.getDamager()).sendTitle(
-                    I18NUtils.get(damaged, "wonfight"),
-                    I18NUtils.get(damaged, "wonfight.sub"),
+                    I18NUtils.get((Player) event.getDamager(), "wonfight"),
+                    I18NUtils.get((Player) event.getDamager(), "wonfight.sub"),
                     20,
                     40,
                     20
