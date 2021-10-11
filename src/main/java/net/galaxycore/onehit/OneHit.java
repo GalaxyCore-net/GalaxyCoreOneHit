@@ -64,9 +64,15 @@ public final class OneHit extends JavaPlugin {
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings", "§eEinstellungen");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.buy", "§eKaufen: ");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.alreadybought", "§eBereits gekauft");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.coins", "Coins");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.setchosen", "§eSet Ausgewählt");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.booster.lore", "Schleudert dich für 5 min nach vorne");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.booster.bought", "§eDu hast den Booster für 5 min erhalten!");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.booster.price", "§7150 Coins");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.messageset.0.name", "Standart-Nachrichten");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.messageset.1.name", "Spezial-Nachrichten 1");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.messageset.2.name", "Spezial-Nachrichten 2");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.messageset.3.name", "Spezial-Team-Nachrichten");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".booster", "§cBooster");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".sword", "§cSchwert");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".bow", "§cBogen");
@@ -82,13 +88,20 @@ public final class OneHit extends JavaPlugin {
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.coins", "Coins");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.sub", "Teamspeak-Server");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.sub.value", "galaxycore.net");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".nomoney", "§cDu hast nicht genügend Geld");
 
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings", "§eSettings");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.buy", "§eBuy: ");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.coins", "Coins");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.alreadybought", "§eAlready bought");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.setchosen", "§eSet Chosen");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.booster.lore", "Throws yourself forward for 5 min\n§7(150 Coins)");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.booster.bought", "§eYou bought the Booster for five minutes!");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.booster.price", "§7150 Coins");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.messageset.0.name", "Normal Messages");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.messageset.1.name", "Special Messages 1");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.messageset.2.name", "Special Messages 2");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.messageset.3.name", "Special Team Messages");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".booster", "§cBooster");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".sword", "§cSword");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".bow", "§cBow");
@@ -104,6 +117,7 @@ public final class OneHit extends JavaPlugin {
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.coins", "Coins");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.sub", "Teamspeak-Server");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".score.sub.value", "galaxycore.net");
+            I18N.setDefaultByLang("en_GB", "onehit." + i + ".nomoney", "§cYou don't have enough money");
         }
         // LISTENERS//
         Bukkit.getPluginManager().registerEvents(new BaseListeners(), this);
