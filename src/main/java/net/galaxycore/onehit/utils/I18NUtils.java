@@ -9,7 +9,10 @@ import org.bukkit.entity.Player;
 public class I18NUtils {
 
     public static String get(Player player, String key) {
-        String i18nval = I18N.getByPlayer(player, "onehit." + MessageSetLoader.get(player) + "." + key);
-        return StringUtils.replaceRelevant(i18nval, new LuckPermsApiWrapper(player));
+        return StringUtils.replaceRelevant(I18N.getByPlayer(player, "onehit." + MessageSetLoader.get(player) + "." + key), new LuckPermsApiWrapper(player));
+    }
+
+    public static String getRF(Player player, String key, Player player2) {
+        return StringUtils.replaceRelevant(I18N.getByPlayer(player, "onehit." + MessageSetLoader.get(player) + "." + key), new LuckPermsApiWrapper(player2));
     }
 }

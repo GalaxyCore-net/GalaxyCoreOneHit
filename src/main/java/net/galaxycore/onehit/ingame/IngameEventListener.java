@@ -53,8 +53,8 @@ public class IngameEventListener implements Listener {
             event.getDamager().remove();
 
             damaged.sendTitle(
-                    I18NUtils.get(damaged, "killed"),
-                    I18NUtils.get(damaged, "killed.sub"),
+                    I18NUtils.getRF(damaged, "killed", ((Player) Objects.requireNonNull(((Arrow) event.getDamager())))),
+                    I18NUtils.getRF(damaged, "killed.sub", ((Player) Objects.requireNonNull(((Arrow) event.getDamager())))),
                     20,
                     40,
                     20
@@ -78,16 +78,16 @@ public class IngameEventListener implements Listener {
         } else if (killerType == EntityType.PLAYER) {
             if (SpawnHelper.isPlayerInASpawn((Player) event.getDamager())) return;
             damaged.sendTitle(
-                    I18NUtils.get(damaged, "killed"),
-                    I18NUtils.get(damaged, "killed.sub"),
+                    I18NUtils.getRF(damaged, "killed", ((Player) event.getDamager())),
+                    I18NUtils.getRF(damaged, "killed.sub", ((Player) event.getDamager())),
                     20,
                     40,
                     20
             );
 
             ((Player) event.getDamager()).sendTitle(
-                    I18NUtils.get((Player) event.getDamager(), "wonfight"),
-                    I18NUtils.get((Player) event.getDamager(), "wonfight.sub"),
+                    I18NUtils.getRF((Player) event.getDamager(), "wonfight", damaged),
+                    I18NUtils.getRF((Player) event.getDamager(), "wonfight.sub", damaged),
                     20,
                     40,
                     20
