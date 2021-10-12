@@ -55,6 +55,11 @@ public class BaseListeners implements Listener {
     }
 
     @EventHandler
+    public void onInteract(PlayerInteractEvent event) {
+        event.setCancelled(true);
+    }
+
+    @EventHandler
     public void onFlowerEdit(PlayerFlowerPotManipulateEvent event) {
         event.setCancelled(true);
     }
