@@ -53,8 +53,8 @@ public class IngameEventListener implements Listener {
             event.getDamager().remove();
 
             damaged.sendTitle(
-                    I18NUtils.getRF(damaged, "killed", ((Player) Objects.requireNonNull(((Arrow) event.getDamager())))),
-                    I18NUtils.getRF(damaged, "killed.sub", ((Player) Objects.requireNonNull(((Arrow) event.getDamager())))),
+                    I18NUtils.getRF(damaged, "killed", ((Player) Objects.requireNonNull(((Arrow) event.getDamager())).getShooter())),
+                    I18NUtils.getRF(damaged, "killed.sub", ((Player) Objects.requireNonNull(((Arrow) event.getDamager())).getShooter())),
                     20,
                     40,
                     20
