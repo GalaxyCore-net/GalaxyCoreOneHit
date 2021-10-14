@@ -61,8 +61,8 @@ public class IngameEventListener implements Listener {
             );
 
             ((Player) Objects.requireNonNull(((Arrow) event.getDamager()).getShooter())).sendTitle(
-                    I18NUtils.get((Player) ((Arrow) event.getDamager()).getShooter(), "wonfight"),
-                    I18NUtils.get((Player) ((Arrow) event.getDamager()).getShooter(), "wonfight.sub"),
+                    I18NUtils.getRF((Player) ((Arrow) event.getDamager()).getShooter(), "wonfight", damaged),
+                    I18NUtils.getRF((Player) ((Arrow) event.getDamager()).getShooter(), "wonfight.sub", damaged),
                     20,
                     40,
                     20
