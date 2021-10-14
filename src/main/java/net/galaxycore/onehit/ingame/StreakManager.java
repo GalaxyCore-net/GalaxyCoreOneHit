@@ -27,7 +27,7 @@ public class StreakManager implements Listener {
 
         if (streak % 3 == 0)
             for (Player onlinePlayer : Bukkit.getOnlinePlayers())
-                onlinePlayer.sendMessage(Component.text(String.format(StringUtils.replaceRelevant(I18NUtils.get(player, "streak"), new LuckPermsApiWrapper(player)), streak)));
+                onlinePlayer.sendMessage(Component.text(String.format(StringUtils.replaceRelevant(I18NUtils.get(onlinePlayer, "streak"), new LuckPermsApiWrapper(player)), streak)));
 
 
         OneHitDebug.debug(player.getName() + " now has a streak of " + streak);
