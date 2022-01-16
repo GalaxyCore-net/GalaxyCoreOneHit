@@ -16,6 +16,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.projectKey>GalaxyCore-net_GalaxyCoreOneHit</sonar.projectKey>
     </properties>
+         
+    <distributionManagement>
+        <repository>
+            <id>galaxycore</id>
+            <url>https://nrm.galaxycore.net/repository/galaxycore/</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
