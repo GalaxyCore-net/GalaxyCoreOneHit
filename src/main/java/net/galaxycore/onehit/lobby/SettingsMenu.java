@@ -63,10 +63,10 @@ public class SettingsMenu extends Menu {
                 LuckPerms luckPerms = LuckPermsProvider.get();
                 Node node = Node.builder(permission).build();
                 luckPerms.getUserManager().modifyUser(playerMenuUtility.getOwner().getUniqueId(), (User user) -> user.data().add(node));
-                playerMenuUtility.getOwner().sendMessage(Component.text(I18NUtils.get(playerMenuUtility.getOwner(), "settings.setchosen")));
             }
             MessageSetLoader.set(playerMenuUtility.getOwner(), inventoryClickEvent.getSlot() - 5);
             MessageSetLoader.reloadPlayer(playerMenuUtility.getOwner());
+            playerMenuUtility.getOwner().sendMessage(Component.text(I18NUtils.get(playerMenuUtility.getOwner(), "settings.setchosen")));
         }
     }
 
