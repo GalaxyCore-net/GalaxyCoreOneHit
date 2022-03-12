@@ -66,7 +66,7 @@ public final class OneHit extends JavaPlugin {
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.buy", "§eKaufen: ");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.alreadybought", "§eBereits gekauft");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.coins", "Coins");
-            I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.setchosen", "§eSet Ausgewählt");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.setchosen", "§eSet Ausgewählt", true);
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.booster.lore", "Schleudert dich für 5 min nach vorne");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.booster.bought", "§eDu hast den Booster für 5 min erhalten!");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".settings.booster.price", "§7150 Coins");
@@ -80,7 +80,7 @@ public final class OneHit extends JavaPlugin {
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".arrow", "§cPfeil");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".killed", "§l§c✖ §r§4Gestorben");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".killed.sub", "%rank_prefix%%player% §8| §c-5 Coins");
-            I18N.setDefaultByLang("de_DE", "onehit." + i + ".killedself", "%rank_prefix%%player% §9hat sich selber mit dem Bogen abgeschossen. Das ist belastend.");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".killedself", "%rank_prefix%%player% §9hat sich selber mit dem Bogen abgeschossen. Das ist belastend.", true);
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".wonfight", "§l§a✓ §r§4+5 Coins");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".wonfight.sub", "%rank_prefix%%player%");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.kills", "Kills");
@@ -93,8 +93,8 @@ public final class OneHit extends JavaPlugin {
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.coins.color", "§e");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.sub", "Teamspeak-Server");
             I18N.setDefaultByLang("de_DE", "onehit." + i + ".score.sub.value", "galaxycore.net");
-            I18N.setDefaultByLang("de_DE", "onehit." + i + ".nomoney", "§cDu hast nicht genügend Geld");
-            I18N.setDefaultByLang("de_DE", "onehit." + i + ".streak", "§c%player% hat nun einen Streak von %d!");
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".nomoney", "§cDu hast nicht genügend Geld", true);
+            I18N.setDefaultByLang("de_DE", "onehit." + i + ".streak", "§c%player% hat nun einen Streak von %d!", true);
 
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings", "§eSettings");
             I18N.setDefaultByLang("en_GB", "onehit." + i + ".settings.buy", "§eBuy: ");

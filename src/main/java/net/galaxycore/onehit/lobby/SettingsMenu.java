@@ -18,6 +18,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SettingsMenu extends Menu {
@@ -75,12 +77,10 @@ public class SettingsMenu extends Menu {
         ItemStack booster = new ItemStack(Material.FIRE_CHARGE);
         ItemMeta boosterItemMeta = booster.getItemMeta();
         boosterItemMeta.displayName(Component.text(I18NUtils.get(playerMenuUtility.getOwner(), "settings.buy") + I18NUtils.get(playerMenuUtility.getOwner(), "booster")));
-        boosterItemMeta.lore(List.of(
-                Component.text(I18NUtils.get(playerMenuUtility.getOwner(), "settings.booster.lore")),
+        boosterItemMeta.lore(new ArrayList<>(Arrays.asList(Component.text(I18NUtils.get(playerMenuUtility.getOwner(), "settings.booster.lore")),
                 OneHit.getInstance().getLobbyPhase().getBoosters().containsKey(playerMenuUtility.getOwner().getUniqueId()) ?
                         Component.text(I18NUtils.get(playerMenuUtility.getOwner(), "settings.alreadybought")) :
-                        Component.text(I18NUtils.get(playerMenuUtility.getOwner(), "settings.booster.price"))
-        ));
+                        Component.text(I18NUtils.get(playerMenuUtility.getOwner(), "settings.booster.price")))));
         booster.setItemMeta(boosterItemMeta);
 
         int price1 = Integer.parseInt(OneHit.getInstance().getConfigNamespace().get("price.messageset.0"));
